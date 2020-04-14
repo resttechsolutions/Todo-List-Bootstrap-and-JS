@@ -45,10 +45,24 @@ function getTask(){
         tasksView.innerHTML += `<div class="card">
             <div class="card-body">
                 <p>${title} - ${description}</p>
-                <a class="btn btn-danger">Delete</a>
+                <a onclick="deleteTask('${title}')" class="btn btn-danger">Delete</a>
             </div>
         </div>`
         
     }
 }
 
+function deleteTask(title){
+    let tasks = JSON.parse(localStorage.getItem('tasks'));
+
+    for (let i = 0; i < tasks.length; i++) {
+        if (tasks[i].title == title) {
+            tasks.splice(i, 1);
+        }
+        
+    }
+
+    localStorage.setItem('tasks', JSON.stringify(tasks));
+
+    getTask();
+}
