@@ -28,6 +28,9 @@ function saveTask(e){
     }
     
     getTask();
+    
+    document.getElementById('formTask').reset();
+
     e.preventDefault();
 }
 
